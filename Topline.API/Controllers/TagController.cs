@@ -9,16 +9,25 @@ namespace Topline.API.Controllers
     public class TagController : ControllerBase
     {
         private ITagService tagService;
+        private ITaggedItemService taggedItemService;
 
-        public TagController(ITagService tagService)
+        private IItemService itemService;
+
+        public TagController(ITagService tagService, ITaggedItemService taggedItemService, IItemService itemService)
         {
             this.tagService = tagService;
+            this.taggedItemService = taggedItemService;
+
+            this.itemService = itemService;
         }
 
         [HttpGet("all")]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery] string itemId)
         {
-            List<Tag> tags = await tagService.GetAll();
+            List<Tag> tags;
+
+            if (string.IsNullOrWhiteSpace(itemId)) tags = await tagService.GetAll();
+            else tags = await taggedItemService.GetByItemId(itemId);
 
             List<TagResponseDTO> dtoList = tags.Select(curr => new TagResponseDTO()
             {
@@ -66,6 +75,34 @@ namespace Topline.API.Controllers
                 Id = result.Id,
                 Name = result.Name
             });
+        }
+
+        [HttpPost("attach")]
+        public async Task<IActionResult> AttachTagToItem([FromBody] AttachTagDTO form)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(string.Join(
+                    "; ",
+                    ModelState.Values.Select(e => e.Errors).Select(e => string.Join("; ", e.Select(e => e.ErrorMessage)))
+                ));
+
+            TaggedItem result = await taggedItemService.AttachTag(form.ItemId, form.TagId);
+
+            return Ok(await itemService.Dto(await itemService.GetById(result.ItemId)));
+        }
+
+        [HttpDelete("attach")]
+        public async Task<IActionResult> RemoveTagFromItem([FromBody] AttachTagDTO form)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(string.Join(
+                    "; ",
+                    ModelState.Values.Select(e => e.Errors).Select(e => string.Join("; ", e.Select(e => e.ErrorMessage)))
+                ));
+
+            TaggedItem result = await taggedItemService.RemoveTag(form.ItemId, form.TagId);
+
+            return Ok(await itemService.Dto(await itemService.GetById(result.ItemId)));
         }
 
         [HttpPut("edit/{id}")]

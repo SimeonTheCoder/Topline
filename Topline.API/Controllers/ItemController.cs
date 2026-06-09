@@ -9,28 +9,28 @@ namespace Topline.API.Controllers
     public class ItemController : ControllerBase
     {
         private IItemService itemService;
+        private ITaggedItemService taggedItemService;
 
-        public ItemController(IItemService itemService)
+        public ItemController(IItemService itemService, ITaggedItemService taggedItemService)
         {
             this.itemService = itemService;
+            this.taggedItemService = taggedItemService;
         }
 
         [HttpGet("all")]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery] string tagId)
         {
-            List<Item> items = await itemService.GetAll();
+            List<Item> items;
 
-            List<ItemResponseDTO> dtoList = items.Select(curr => new ItemResponseDTO()
-            {
-                Id = curr.Id,
-                Name = curr.Name,
-                Artist = curr.Artist,
-                Description = curr.Description,
-                Year = curr.Year,
-                Type = curr.Type.ToString(),
-            }).ToList();
+            if (string.IsNullOrWhiteSpace(tagId)) items = await itemService.GetAll();
+            else items = await taggedItemService.GetByTagId(tagId);
 
-            if (dtoList.Count == 0) return NoContent();
+            if (items.Count == 0) return NoContent();
+
+            List<ItemResponseDTO> dtoList = new();
+
+            foreach (Item item in items)
+                dtoList.Add(await itemService.Dto(item));
 
             return Ok(dtoList);
         }
@@ -41,16 +41,7 @@ namespace Topline.API.Controllers
             try
             {
                 Item item = await itemService.GetById(id);
-
-                return Ok(new ItemResponseDTO()
-                {
-                    Id = item.Id,
-                    Name = item.Name,
-                    Artist = item.Artist,
-                    Description = item.Description,
-                    Year = item.Year,
-                    Type = item.Type.ToString(),
-                });
+                return Ok(await itemService.Dto(item));
             }
             catch (NullReferenceException)
             {
@@ -70,16 +61,7 @@ namespace Topline.API.Controllers
             if (form.Year == 0 || form.Year < 1000) return BadRequest("Invalid year!");
 
             Item result = await itemService.CreateItem(form);
-
-            return Ok(new ItemResponseDTO()
-            {
-                Id = result.Id,
-                Name = result.Name,
-                Artist = result.Artist,
-                Description = result.Description,
-                Year = result.Year,
-                Type = result.Type.ToString(),
-            });
+            return Ok(await itemService.Dto(result));
         }
 
         [HttpPut("edit/{id}")]
@@ -95,15 +77,7 @@ namespace Topline.API.Controllers
 
             Item result = await itemService.EditItem(id, form);
 
-            return Ok(new ItemResponseDTO()
-            {
-                Id = result.Id,
-                Name = result.Name,
-                Artist = result.Artist,
-                Description = result.Description,
-                Year = result.Year,
-                Type = result.Type.ToString(),
-            });
+            return Ok(await itemService.Dto(result));
         }
     }
 }

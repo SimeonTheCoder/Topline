@@ -24,7 +24,7 @@ namespace Topline.Core.Services
         public async Task<Tag> GetById(string id)
         {
             Tag? result = await context.Tags.FirstOrDefaultAsync(t => t.Id == id);
-            if (result == null) throw new NullReferenceException("Item not found!");
+            if (result == null) throw new NullReferenceException("Tag not found!");
 
             return result;
         }
@@ -45,7 +45,7 @@ namespace Topline.Core.Services
         public async Task<Tag> EditTag(string id, TagCreateFormDTO form)
         {
             Tag? tag = await context.Tags.FirstOrDefaultAsync(i => i.Id == id);
-            if (tag == null) throw new NullReferenceException("Item not found!");
+            if (tag == null) throw new NullReferenceException("Tag not found!");
 
             tag.Name = form.Name;
 

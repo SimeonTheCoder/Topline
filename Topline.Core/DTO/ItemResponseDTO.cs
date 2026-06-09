@@ -13,5 +13,7 @@
         public int Year { get; set; }
 
         public string Type { get; set; } = string.Empty;
+
+        public List<TagResponseDTO> Tags { get; set; } = new();
     }
 }

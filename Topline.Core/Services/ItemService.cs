@@ -10,10 +10,12 @@ namespace Topline.Core.Services
     public class ItemService : IItemService
     {
         private AppDbContext context;
+        private ITaggedItemService taggedItemService;
 
-        public ItemService(AppDbContext context)
+        public ItemService(AppDbContext context, ITaggedItemService taggedItemService)
         {
             this.context = context;
+            this.taggedItemService = taggedItemService;
         }
 
         public async Task<List<Item>> GetAll()
@@ -66,6 +68,25 @@ namespace Topline.Core.Services
             await context.SaveChangesAsync();
 
             return item;
+        }
+
+        public async Task<ItemResponseDTO> Dto(Item item)
+        {
+            ItemResponseDTO dto = new();
+
+            dto.Id = item.Id;
+            dto.Name = item.Name;
+            dto.Artist = item.Artist;
+            dto.Description = item.Description;
+            dto.Year = item.Year;
+            dto.Type = item.Type.ToString();
+            dto.Tags = (await taggedItemService.GetByItemId(item.Id)).Select(t => new TagResponseDTO()
+            {
+                Id = t.Id,
+                Name = t.Name
+            }).ToList()!;
+
+            return dto;
         }
     }
 }

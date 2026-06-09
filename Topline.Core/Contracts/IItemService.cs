@@ -12,5 +12,7 @@ namespace Topline.Core.Contracts
         public Task<Item> CreateItem(ItemCreateFormDTO dto);
 
         public Task<Item> EditItem(string id, ItemCreateFormDTO dto);
+
+        public Task<ItemResponseDTO> Dto(Item item);
     }
 }
