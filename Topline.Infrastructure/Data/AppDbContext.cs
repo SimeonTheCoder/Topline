@@ -7,11 +7,11 @@ namespace Topline.Infrastructure.Data
 {
     public class AppDbContext : IdentityDbContext<User>
     {
-        DbSet<Tag> Tags { get; set; }
-        DbSet<Item> Items { get; set; }
-        DbSet<TaggedItem> TaggedItems { get; set; }
-        DbSet<Rating> Ratings { get; set; }
-        DbSet<Comment> Comments { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<Item> Items { get; set; }
+        public DbSet<TaggedItem> TaggedItems { get; set; }
+        public DbSet<Rating> Ratings { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
         public AppDbContext(DbContextOptions options) : base(options)
         {

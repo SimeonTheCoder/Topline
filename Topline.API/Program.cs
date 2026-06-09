@@ -1,9 +1,8 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Topline.API.Extensions;
+using Topline.Core.Contracts;
+using Topline.Core.Services;
 using Topline.Infrastructure.Data;
 using Topline.Infrastructure.Data.Models;
 
@@ -20,8 +19,14 @@ builder.Services.AddIdentity<User, IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>()
     .AddDefaultTokenProviders();
 
+builder.Services.AddScoped<IItemService, ItemService>();
+
+builder.Services.AddControllers();
+
 var app = builder.Build();
 
 await app.SeedUsersAsync();
+
+app.MapControllers();
 
 app.Run();
