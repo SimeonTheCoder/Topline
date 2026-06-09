@@ -20,6 +20,7 @@ builder.Services.AddIdentity<User, IdentityRole>()
     .AddDefaultTokenProviders();
 
 builder.Services.AddScoped<IItemService, ItemService>();
+builder.Services.AddScoped<ITagService, TagService>();
 
 builder.Services.AddControllers();
 
