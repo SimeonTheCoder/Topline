@@ -16,9 +16,9 @@ namespace Topline.Infrastructure.Data.Models
         [ForeignKey(nameof(Item))]
         public string ItemId { get; set; } = string.Empty;
 
-        public User? User { get; set; } = null!;
-        [ForeignKey(nameof(User))]
-        public string UserId { get; set; } = string.Empty;
+        public Tag? Tag { get; set; } = null!;
+        [ForeignKey(nameof(Tag))]
+        public string TagId { get; set; } = string.Empty;
 
         public TaggedItem()
         {

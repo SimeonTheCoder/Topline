@@ -19,7 +19,9 @@ public class Program
             options.UseSqlServer(connectionString);
         });
 
-        builder.Services.AddIdentity<User, IdentityRole>();
+        builder.Services.AddIdentity<User, IdentityRole>()
+            .AddEntityFrameworkStores<AppDbContext>()
+            .AddDefaultTokenProviders();
 
         var app = builder.Build();
         app.Run();
