@@ -3,27 +3,25 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Topline.API.Extensions;
 using Topline.Infrastructure.Data;
 using Topline.Infrastructure.Data.Models;
 
-public class Program
+var builder = WebApplication.CreateBuilder(args);
+
+string connectionString = builder.Configuration.GetConnectionString("DefaultConnection")!;
+
+builder.Services.AddDbContext<AppDbContext>(options =>
 {
-    static void Main(string[] args)
-    {
-        var builder = WebApplication.CreateBuilder(args);
+    options.UseSqlServer(connectionString);
+});
 
-        string connectionString = builder.Configuration.GetConnectionString("DefaultConnection")!;
+builder.Services.AddIdentity<User, IdentityRole>()
+    .AddEntityFrameworkStores<AppDbContext>()
+    .AddDefaultTokenProviders();
 
-        builder.Services.AddDbContext<AppDbContext>(options =>
-        {
-            options.UseSqlServer(connectionString);
-        });
+var app = builder.Build();
 
-        builder.Services.AddIdentity<User, IdentityRole>()
-            .AddEntityFrameworkStores<AppDbContext>()
-            .AddDefaultTokenProviders();
+await app.SeedUsersAsync();
 
-        var app = builder.Build();
-        app.Run();
-    }
-}
+app.Run();
