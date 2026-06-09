@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Topline.Infrastructure.Data;
 
@@ -11,9 +12,11 @@ using Topline.Infrastructure.Data;
 namespace Topline.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260609204936_SeededTags")]
+    partial class SeededTags
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -428,38 +431,6 @@ namespace Topline.Infrastructure.Data.Migrations
                     b.HasIndex("TagId");
 
                     b.ToTable("TaggedItems");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "e7a3a892-f097-4c40-b65f-7d9a12b4bb5f",
-                            ItemId = "4241c4cb-77c8-4a65-bae7-61b489215b73",
-                            TagId = "f6888f01-e3e4-4bcf-9e09-1a3df63056ae"
-                        },
-                        new
-                        {
-                            Id = "b1a12ac6-58bf-4917-a01c-f2e9fa747a10",
-                            ItemId = "77a8e9ee-28f2-4823-8794-3a7bc33344f0",
-                            TagId = "f6888f01-e3e4-4bcf-9e09-1a3df63056ae"
-                        },
-                        new
-                        {
-                            Id = "061881bd-3066-406d-ad2f-51f0109baf6c",
-                            ItemId = "a0ec7334-e7ac-40d6-8c82-40de9865cbc9",
-                            TagId = "f6888f01-e3e4-4bcf-9e09-1a3df63056ae"
-                        },
-                        new
-                        {
-                            Id = "90cb1080-d81b-4157-95c0-2f84f0d18aa0",
-                            ItemId = "a0ec7334-e7ac-40d6-8c82-40de9865cbc9",
-                            TagId = "8a20359f-aa32-4886-b2c5-60924d777a1c"
-                        },
-                        new
-                        {
-                            Id = "02a1e577-de0a-44d6-b8b5-8cf3eaa69b06",
-                            ItemId = "1bbc3f6e-3779-4ec3-9fbe-3e314b2f94bd",
-                            TagId = "260fed70-16bf-4897-856e-ad8444a2c449"
-                        });
                 });
 
             modelBuilder.Entity("Topline.Infrastructure.Data.Models.User", b =>

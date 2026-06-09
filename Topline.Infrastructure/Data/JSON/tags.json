@@ -1,0 +1,26 @@
+[
+  {
+    "id": "f6888f01-e3e4-4bcf-9e09-1a3df63056ae",
+    "name": "Progressive Rock"
+  },
+  {
+    "id": "8a20359f-aa32-4886-b2c5-60924d777a1c",
+    "name": "Classic Rock"
+  },
+  {
+    "id": "433267cb-13f5-439a-abb9-819bbf741017",
+    "name": "Pop Rock"
+  },
+  {
+    "id": "c578a36c-176c-471e-9cdd-aaf79fcfdc2e",
+    "name": "Pop"
+  },
+  {
+    "id": "67bd618e-9eec-4760-9300-481ce1bdcd1f",
+    "name": "Disco"
+  },
+  {
+    "id": "260fed70-16bf-4897-856e-ad8444a2c449",
+    "name": "Heavy Metal"
+  }
+]
