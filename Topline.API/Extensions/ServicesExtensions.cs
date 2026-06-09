@@ -13,7 +13,7 @@ namespace Topline.API.Extensions
             using (IServiceScope scope = app.Services.CreateScope())
             {
                 UserManager<User> userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
-                List<User> users = Seeder.SeedUsers();
+                List<User> users = UserSeeder.SeedUsers();
 
                 foreach (User user in users)
                 {

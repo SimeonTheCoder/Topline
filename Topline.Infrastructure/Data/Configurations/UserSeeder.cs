@@ -6,7 +6,7 @@ using Topline.Infrastructure.Data.Models;
 
 namespace Topline.Infrastructure.Data.Configurations
 {
-    public class Seeder
+    public class UserSeeder
     {
         const string JsonPath = "../Topline.Infrastructure/Data/JSON/users.json";
 

@@ -1,0 +1,106 @@
+[
+  {
+    "id": "4241c4cb-77c8-4a65-bae7-61b489215b73",
+    "name": "The Dark Side of the Moon",
+    "artist": "Pink Floyd",
+    "year": 1973,
+    "description": "A landmark progressive rock album exploring themes of time, money, and mental health through seamless sonic storytelling.",
+    "type": "LP"
+  },
+  {
+    "id": "77a8e9ee-28f2-4823-8794-3a7bc33344f0",
+    "name": "Wish You Were Here",
+    "artist": "Pink Floyd",
+    "year": 1975,
+    "description": "A reflective album built around absence and tribute, especially honoring former member Syd Barrett.",
+    "type": "LP"
+  },
+  {
+    "id": "a29f338e-4de8-4311-8644-6bfd1c996880",
+    "name": "Arnold Layne",
+    "artist": "Pink Floyd",
+    "year": 1967,
+    "description": "A quirky debut single about a peculiar character with unusual habits that set early Pink Floyd apart.",
+    "type": "Song"
+  },
+  {
+    "id": "92aede7c-b5aa-4ffc-a512-971ea8e9cb7e",
+    "name": "Brothers in Arms",
+    "artist": "Dire Straits",
+    "year": 1985,
+    "description": "A polished rock album blending emotional storytelling with cutting-edge 80s production.",
+    "type": "LP"
+  },
+  {
+    "id": "1b4cf44a-4d5c-4071-9035-5cbd1bf523f6",
+    "name": "Sultans of Swing",
+    "artist": "Dire Straits",
+    "year": 1978,
+    "description": "A breakout track showcasing intricate guitar work and observational lyrics about bar-band musicians.",
+    "type": "Song"
+  },
+  {
+    "id": "fecfd254-56ac-4320-9108-a9af567fbffb",
+    "name": "Love at First Sting",
+    "artist": "Scorpions",
+    "year": 1984,
+    "description": "A hard rock album that helped define the band’s global arena-rock sound in the 80s.",
+    "type": "LP"
+  },
+  {
+    "id": "00baf8a9-c7c0-42ab-9bcb-706b108e552f",
+    "name": "Rock You Like a Hurricane",
+    "artist": "Scorpions",
+    "year": 1984,
+    "description": "A high-energy rock anthem built for stadiums and heavy rotation.",
+    "type": "Song"
+  },
+  {
+    "id": "9847baf5-736e-4751-8ff3-2e8774b22972",
+    "name": "Machine Head",
+    "artist": "Deep Purple",
+    "year": 1972,
+    "description": "A defining hard rock album famously featuring one of the most iconic riffs in rock history.",
+    "type": "LP"
+  },
+  {
+    "id": "023ab7d9-4bb3-4315-95bb-47dee5da999f",
+    "name": "Smoke on the Water",
+    "artist": "Deep Purple",
+    "year": 1972,
+    "description": "A legendary riff-driven song inspired by a real-life recording studio fire.",
+    "type": "Song"
+  },
+  {
+    "id": "1bbc3f6e-3779-4ec3-9fbe-3e314b2f94bd",
+    "name": "Rising",
+    "artist": "Rainbow",
+    "year": 1976,
+    "description": "A powerful blend of hard rock and early metal showcasing virtuosic musicianship.",
+    "type": "LP"
+  },
+  {
+    "id": "f2a94813-1697-442a-913d-b153de85cd28",
+    "name": "Stargazer",
+    "artist": "Rainbow",
+    "year": 1976,
+    "description": "An epic, dramatic track built like a fantasy saga in guitar form.",
+    "type": "Song"
+  },
+  {
+    "id": "a0ec7334-e7ac-40d6-8c82-40de9865cbc9",
+    "name": "Eye in the Sky",
+    "artist": "The Alan Parsons Project",
+    "year": 1982,
+    "description": "A sleek, atmospheric album blending progressive rock with pop sensibilities.",
+    "type": "LP"
+  },
+  {
+    "id": "1e563b77-5fd7-445f-8733-99e2ba4931c7",
+    "name": "The Turn of a Friendly Card",
+    "artist": "The Alan Parsons Project",
+    "year": 1980,
+    "description": "A concept album exploring gambling, fate, and chance through layered progressive arrangements.",
+    "type": "LP"
+  }
+]
