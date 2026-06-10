@@ -15,5 +15,7 @@
         public string Type { get; set; } = string.Empty;
 
         public List<TagResponseDTO> Tags { get; set; } = new();
+
+        public List<RatingResponseDTO> Ratings { get; set; } = new();
     }
 }

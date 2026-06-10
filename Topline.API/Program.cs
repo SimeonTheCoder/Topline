@@ -22,6 +22,7 @@ builder.Services.AddIdentity<User, IdentityRole>()
 builder.Services.AddScoped<IItemService, ItemService>();
 builder.Services.AddScoped<ITagService, TagService>();
 builder.Services.AddScoped<ITaggedItemService, TaggedItemService>();
+builder.Services.AddScoped<IRatingService, RatingService>();
 
 builder.Services.AddControllers();
 

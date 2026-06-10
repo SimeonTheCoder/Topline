@@ -11,11 +11,13 @@ namespace Topline.Core.Services
     {
         private AppDbContext context;
         private ITaggedItemService taggedItemService;
+        private IRatingService ratingService;
 
-        public ItemService(AppDbContext context, ITaggedItemService taggedItemService)
+        public ItemService(AppDbContext context, ITaggedItemService taggedItemService, IRatingService ratingService)
         {
             this.context = context;
             this.taggedItemService = taggedItemService;
+            this.ratingService = ratingService;
         }
 
         public async Task<List<Item>> GetAll()
@@ -85,6 +87,7 @@ namespace Topline.Core.Services
                 Id = t.Id,
                 Name = t.Name
             }).ToList()!;
+            dto.Ratings = (await ratingService.GetByItemId(item.Id)).Select(r => ratingService.Dto(r)).ToList();
 
             return dto;
         }
